@@ -1,9 +1,9 @@
 FROM alpine:3.11.6
 
 ENV GLIBC_VER=2.31-r0
-ENV KUBECTL_VER=v1.18.2
-ENV AWS_IAM_AUTHENTICATOR_VER=1.16.8
-ENV SOPS_VER=v3.5.0
+ENV KUBECTL_VER=v1.19.4
+ENV AWS_IAM_AUTHENTICATOR_VER=1.18.9
+ENV SOPS_VER=v3.6.1
 
 # install glibc compatibility for alpine
 RUN apk --no-cache add \
@@ -23,7 +23,7 @@ RUN apk --no-cache add \
 RUN	mkdir -p /aws \
   && curl -o /usr/local/bin/kubectl -L https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VER}/bin/linux/amd64/kubectl \
   && chmod +x /usr/local/bin/kubectl \
-  && curl -o /usr/local/bin/aws-iam-authenticator -L https://amazon-eks.s3.us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VER}/2020-04-16/bin/linux/amd64/aws-iam-authenticator \
+  && curl -o /usr/local/bin/aws-iam-authenticator -L https://amazon-eks.s3.us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VER}/2020-11-02/bin/linux/amd64/aws-iam-authenticator \
   && chmod +x /usr/local/bin/aws-iam-authenticator \
   && curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/${SOPS_VER}/sops-${SOPS_VER}.linux \
   && chmod +x /usr/local/bin/sops
